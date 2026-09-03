@@ -1,0 +1,7 @@
+3
+Skywalker, Luke
+Math 100 95 90 85 80 88 92 94
+Kenobi, Obi Wan
+History 85 87 90
+Solo, Han
+English 70 75 80 85

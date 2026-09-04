@@ -17,4 +17,8 @@ jobs:
         run: g++ menu.cpp studentlist.cpp student.cpp
 
       - name: Run the program
-        run: ./a.out
+        run: ./a.out << EOF
+             I
+             test3.txt
+             Q
+             EOF

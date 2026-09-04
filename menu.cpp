@@ -5,7 +5,7 @@
 #include "student.h"
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
 	StudentList studentlist;
 	//printing the main menu
@@ -16,19 +16,23 @@ int main()
 	cout<<"E          Export a grade report (to file)"<<endl;
 	cout<<"M          Show this Menu "<<endl;
 	cout<<"Q          Quit Program"<<endl;
+
+	cout << "You've entered " << argc << " arguments:\n";
+	for(int i = 0; i < argc; i++)
+	{
 	while(choice != 'Q')
 	{
 		cout<<"enter choice ";
-		cin>>choice;
 
-		choice = toupper(choice);
+		choice = toupper(argv[i]);
 		switch(choice)
 		{
 			case 'I':
 			{
 				char filename[31];
 				cout<<"Enter a file name";
-				cin>>filename;
+				++i;
+				filename = argv[i];
 				if(!studentlist.ImportFile(filename))
 					cout<<"bad file, task not completed"<<endl;
 			}
@@ -42,8 +46,8 @@ int main()
 			{
 				char filename[31];
 				cout<<"Enter file name";
-				cin>>filename;
-
+				filename = argv[i];
+				++i;
 				if(!studentlist.CreateReportFile(filename))
 					cout<<"Error creating report file\n";
 				else
@@ -68,6 +72,7 @@ int main()
 			default:
 				cout<< "Invalid choice, please try again"<<endl;
 		}
+	 }
 	}
 	return 0;
 }

@@ -61,6 +61,10 @@ int main()
 
 			}
 			break;	
+			case 'Q':
+			{
+			}
+			break;
 			default:
 				cout<< "Invalid choice, please try again"<<endl;
 		}

@@ -17,4 +17,4 @@ jobs:
         run: g++ menu.cpp studentlist.cpp student.cpp
 
       - name: Run the program
-        run: ./student
+        run: ./a.out

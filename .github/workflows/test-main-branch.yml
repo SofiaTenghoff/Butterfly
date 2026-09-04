@@ -17,7 +17,7 @@ jobs:
         run: g++ menu.cpp studentlist.cpp student.cpp
 
       - name: Run the program
-        run: ./a.out << EOF
+        run: timeout 10 ./a.out << EOF
              I
              test3.txt
              Q

@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 	{
 		cout<<"enter choice ";
 
-		choice = toupper(argv[i]);
+		choice = toupper(argv[i][0]);
 		switch(choice)
 		{
 			case 'I':
@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 				char filename[31];
 				cout<<"Enter a file name";
 				++i;
-				filename = argv[i];
+				strcpy(filename, argv[i]);
 				if(!studentlist.ImportFile(filename))
 					cout<<"bad file, task not completed"<<endl;
 			}
@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 			{
 				char filename[31];
 				cout<<"Enter file name";
-				filename = argv[i];
+				strcpy(filename, argv[i]);
 				++i;
 				if(!studentlist.CreateReportFile(filename))
 					cout<<"Error creating report file\n";

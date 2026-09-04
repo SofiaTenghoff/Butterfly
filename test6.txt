@@ -1,0 +1,7 @@
+3
+Parker, Peter
+Math 70 75 80 85 90 88 86 84
+Octavius, Otto
+English 60 65 70 75
+Osborn, Norman
+History 55 60 65

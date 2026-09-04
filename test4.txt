@@ -1,0 +1,5 @@
+2
+Potter, Harry
+English 88 92 85 90
+Granger, Hermione
+Math 100 100 100 100 100 98 99 100

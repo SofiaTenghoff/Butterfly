@@ -1,0 +1,11 @@
+5
+Wayne, Bruce
+Math 100 100 95 95 90 92 94 96
+Kent, Clark
+English 85 88 90 92
+Prince, Diana
+History 95 93 97
+Allen, Barry
+Math 88 87 86 85 84 83 82 81
+Curry, Arthur
+English 78 80 82 84

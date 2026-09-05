@@ -6,24 +6,23 @@
 #include "student.h"
 
 using namespace std;
-
+//command line instructions: First command: menu choice #1  Second command: filename if user chose 'I' or 'E', otherwise menu choice #2, and so on 
 int main(int argc, char* argv[])
 {
 	StudentList studentlist;
 	//printing the main menu
-	char choice = '\0';
+	
+	/*char choice = '\0';
 	cout<<"           *** Student List menu ***"<<endl;
 	cout<<"I          Import students from a file"<<endl;
 	cout<<"S          Show student list (brief)"<<endl;
 	cout<<"E          Export a grade report (to file)"<<endl;
 	cout<<"M          Show this Menu "<<endl;
-	cout<<"Q          Quit Program"<<endl;
-
-	cout << "You've entered " << argc << " arguments:\n";
+	cout<<"Q          Quit Program"<<endl; */
 	
 	for(int i = 1; i < argc && choice != 'Q'; i++)
 	{
-		cout<<"enter choice ";
+		//command line argument gets read here
 
 		choice = toupper(argv[i][0]);
 		switch(choice)
@@ -31,11 +30,11 @@ int main(int argc, char* argv[])
 			case 'I':
 			{
 				char filename[31];
-				//this is where they enter the file name
+				// next command line argument, the filename, gets read here
 				++i;
 				strcpy(filename, argv[i]);
 				if(!studentlist.ImportFile(filename))
-					cout<<"bad file, task not completed"<<endl;
+					cerr<<"bad file, task not completed"<<endl;
 			}
 			break;
 			case 'S':
@@ -46,23 +45,23 @@ int main(int argc, char* argv[])
 			case 'E':
 			{
 				char filename[31];
-				cout<<"Enter file name";
+				// next command line argument, the filename, gets read here
 				strcpy(filename, argv[i]);
 				++i;
 				if(!studentlist.CreateReportFile(filename))
-					cout<<"Error creating report file\n";
+					cerr<<"Error creating report file\n";
 				else
-					cout<<"Report successfully written to file";
+					cerr<<"Report successfully written to file";
 			}
 			break;
 			case 'M':
 			{
-				cout<<"           *** Student List menu ***"<<endl;
+				/*cout<<"           *** Student List menu ***"<<endl;
 			        cout<<"I          Import students from a file"<<endl;
         			cout<<"S          Show student list (brief)"<<endl;
         			cout<<"E          Export a grade report (to file)"<<endl;
         			cout<<"M          Show this Menu "<<endl;
-        			cout<<"Q          Quit Program"<<endl;
+        			cout<<"Q          Quit Program"<<endl;*/
 
 			}
 			break;	
@@ -71,7 +70,7 @@ int main(int argc, char* argv[])
 			}
 			break;
 			default:
-				cout<< "Invalid choice, please try again"<<endl;
+				cerr<< "Invalid choice, please try again"<<endl;
 		}
 	}
 	return 0;

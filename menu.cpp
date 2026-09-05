@@ -12,7 +12,8 @@ int main(int argc, char* argv[])
 	StudentList studentlist;
 	//printing the main menu
 	
-	/*char choice = '\0';
+	char choice = '\0';
+	/*
 	cout<<"           *** Student List menu ***"<<endl;
 	cout<<"I          Import students from a file"<<endl;
 	cout<<"S          Show student list (brief)"<<endl;

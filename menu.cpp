@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cctype>
+#include <cstring>
 #include "studentlist.h"
 #include "student.h"
 using namespace std;

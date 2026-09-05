@@ -20,3 +20,8 @@ jobs:
       - name: Run the program
         run: |
            timeout 10 ./a.out I test3.txt E newtest.txt Q
+      - name: Upload newtest.txt
+        uses: actions/upload-artifact@v4
+        with:
+          name: newtest
+          path: newtest.txt

@@ -19,9 +19,8 @@ int main(int argc, char* argv[])
 	cout<<"Q          Quit Program"<<endl;
 
 	cout << "You've entered " << argc << " arguments:\n";
-	for(int i = 0; i < argc; i++)
-	{
-	while(choice != 'Q')
+	
+	for(int i = 1; i < argc && choice != 'Q'; i++)
 	{
 		cout<<"enter choice ";
 
@@ -31,7 +30,7 @@ int main(int argc, char* argv[])
 			case 'I':
 			{
 				char filename[31];
-				cout<<"Enter a file name";
+				//this is where they enter the file name
 				++i;
 				strcpy(filename, argv[i]);
 				if(!studentlist.ImportFile(filename))
@@ -73,7 +72,6 @@ int main(int argc, char* argv[])
 			default:
 				cout<< "Invalid choice, please try again"<<endl;
 		}
-	 }
 	}
 	return 0;
 }

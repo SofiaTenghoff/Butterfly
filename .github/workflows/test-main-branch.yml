@@ -1,7 +1,6 @@
 name: test-main-branch
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: 
-  push:
   workflow_dispatch:
 
 jobs:

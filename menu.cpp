@@ -47,8 +47,8 @@ int main(int argc, char* argv[])
 			{
 				char filename[31];
 				// next command line argument, the filename, gets read here
-				strcpy(filename, argv[i]);
 				++i;
+				strcpy(filename, argv[i]);
 				if(!studentlist.CreateReportFile(filename))
 					cerr<<"Error creating report file\n";
 				else

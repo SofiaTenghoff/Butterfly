@@ -5,3 +5,4 @@
 #4. Return the output that my program printed to cout
 
 from fastapi import FastAPI
+app = FastAPI()

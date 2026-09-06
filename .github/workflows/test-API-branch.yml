@@ -7,12 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-bats-version:
+  run-python:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-        with:
-          node-version: '24'
-      - run: npm install -g bats
-      - run: bats -v
-      - run: python API.py
+    -name: set up python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+      - run: python API_Code/FastAPI.py

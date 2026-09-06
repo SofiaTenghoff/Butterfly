@@ -4,6 +4,5 @@
 #3. Run my C++ program on that file
 #4. Return the output that my program printed to cout
 
-!pip install fastapi uvicorn
 
 from fastapi import FASTAPI

@@ -17,6 +17,7 @@ jobs:
             python-version: '3.12'
       - name: install dependencies
         run: pip install fastapi uvicorn
+      - name: install other dependency
         run: pip install python-multipart
         
       - name: run python program

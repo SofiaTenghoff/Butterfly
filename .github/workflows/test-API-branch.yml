@@ -15,5 +15,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
             python-version: '3.12'
+      - name: install dependencies
+        run: pip install fastapi uvicorn
+        
       - name: run python program
         run: python API_Code/FastAPI.py

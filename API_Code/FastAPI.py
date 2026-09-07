@@ -19,11 +19,11 @@ def home():
 #sample list of dictionaries: will change later
 posts: list[dict] = [
   {
-    "id" : 1
+    "id" : 1,
     "author" : "me"
   },
   {
-    "id" : 2
+    "id" : 2,
     "author": "you"
   },
 ]

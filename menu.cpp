@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 				else
 					cerr<<"Report successfully written to file";
 		
-		}
+		
 	}
 	return 0;
 }

@@ -21,4 +21,4 @@ jobs:
         run: pip install python-multipart
         
       - name: run python program
-        run: python API_Code/FastAPI.py
+        run: fastapi dev API_Code/FastAPI.py

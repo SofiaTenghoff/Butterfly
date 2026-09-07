@@ -22,6 +22,9 @@ jobs:
         
       - name: run python program
         run: fastapi dev API_Code/FastAPI.py &
+
+      - name: Test home endpoint
+        run: curl http://127.0.0.1:8000/
         
       - name: stop fastapi
         run: pkill -f uvicorn

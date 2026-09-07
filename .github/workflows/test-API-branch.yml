@@ -21,4 +21,7 @@ jobs:
         run: pip install python-multipart
         
       - name: run python program
-        run: fastapi dev API_Code/FastAPI.py
+        run: fastapi dev API_Code/FastAPI.py &
+        
+      - name: stop fastapi
+        run: pkill -f uvicorn

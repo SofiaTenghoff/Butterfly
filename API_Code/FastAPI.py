@@ -21,11 +21,11 @@ posts: list[dict] = [
   {
     "id" : 1
     "author" : "me"
-  }
+  },
   {
     "id" : 2
     "author": "you"
-  }
+  },
 ]
 
 #create an api endpoint for these dictionaries:

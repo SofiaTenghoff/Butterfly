@@ -14,7 +14,7 @@ app = FastAPI() # creates an instance of our application
 #decorating a function called home with the @app.get decorator.
 #if you pass in a path, which is just a forward slash for the route, this function will run
 def home():
-  return f"<h1>{posts[0]['title']}</h1>" #fast api converts this dictionary to json automatically
+  return f"<h1>{posts[0]['id']}</h1>" #fast api converts this dictionary to json automatically
   
 #sample list of dictionaries: will change later
 posts: list[dict] = [

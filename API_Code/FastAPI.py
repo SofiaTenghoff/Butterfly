@@ -12,6 +12,7 @@ app = FastAPI() # creates an instance of our application
 #create a route that responds to a get request at the root url
 @app.get("/", response_class = HTMLResponse) #this is where you get the app. The forward slash makes it for the home route
 #decorating a function called home with the @app.get decorator.
+@app.get("/posts", response_class = HTMLResponse)
 #if you pass in a path, which is just a forward slash for the route, this function will run
 def home():
   return f"<h1>{posts[0]['id']}</h1>" #fast api converts this dictionary to json automatically

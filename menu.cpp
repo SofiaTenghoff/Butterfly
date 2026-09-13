@@ -33,9 +33,11 @@ int main(int argc, char* argv[])
 					cerr<<"bad file, task not completed"<<endl;
 			
 			//if user choise = S
+				
 				studentlist.ShowList();
 	
-	
+				strcpy(filename, argv[i+1]);
+				i += 1;
 				if(!studentlist.CreateReportFile(filename)) //they have to have chosen importFile BEFORE this step
 					cerr<<"Error creating report file\n";
 				else

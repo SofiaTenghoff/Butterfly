@@ -1,0 +1,30 @@
+name: test-main-branch
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+  push:
+    branches: 
+      - API.py
+  workflow_dispatch:
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: set up python
+        uses: actions/setup-python@v5
+        with:
+            python-version: '3.12'
+      - name: install dependencies
+        run: pip install fastapi[standard]
+      - name: install other dependency
+        run: pip install python-multipart
+        
+      - name: run python program
+        run: fastapi dev API_Code/FastAPI.py &
+
+      - name: Test home endpoint
+        run: curl http://127.0.0.1:8000/
+        
+      - name: stop fastapi
+        run: pkill -f uvicorn

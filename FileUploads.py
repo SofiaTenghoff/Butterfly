@@ -13,30 +13,42 @@ CPP_EXECUTABLE = Path(r"C:\Users\tengh\Git\Butterfly")
 #THIS RIGHT HERE CREATES THE UPLOADFILE BUTTON
 async def process_grade_report_file(file: UploadFile = File(...)): #file is a variable of type UploadFile and the file is required
   #save the uploaded file to a temporary location
-  with tempfile.NamedTemporaryFile(delete = False, suffix = ".txt") as tmp: #Using the tempfile module and its functions
+  with tempfile.NamedTemporaryFile(delete = False, suffix = ".txt") as tmp_in: #Using the tempfile module and its functions
     content = await file.read() #the UploadFile class has a .read() function
-    tmp.write(content) #writes the uploaded file's data into a temporary file on the server
-    tmp_path = temp.name #tmp_path is a normal string variable so we can access the temporary file later
+    tmp_in.write(content) #writes the uploaded file's data into a temporary file on the server
+    input_path = tmp_in.name #input_path is a normal string variable so we can access the temporary file later
+
+  with tempfile.NamedTemporaryFile(delete = False, suffix = ".txt") as tmp_out:
+    output_path = tmp_out.name #not writing any contents to the file yet
 
   #run C++ program on temporary file
   try:
     processed_file = subprocess.run(
       #THIS RIGHT HERE MAKES MY C++ CODE INTERPRET WHAT WAS SENT THROUGH UPLOAD FILE BUTTON AS A COMMAND LINE ARG
-    [str(CPP_EXECUTABLE / "menu.exe"), tmp_path],
+    [str(CPP_EXECUTABLE / "menu.exe"), input_path, output_path],
     capture_output=True,
     text=True,
     timeout = 15
-)
+    )
     #check if the C++ program failed
     if processed_file.returncode != 0:
       raise HTTPException(
         status_code=400,
         detail=result.stderr or "Processing failed"
-      )
+    )
 
+    #Read the report that C++ wrote to the output file
+    #here, output_path refers to the variable we created, and by now C++ has already written into it. We have "r" to open the file in read mode
+    with open(output_path, "r", encoding = "utf-8", errors = "ignore") as f: #the "with open" as f opens a file and automatically closes it when the block ends, open is a function that returns a file object
+      report_content = f.read()
+      
     # 4. Return the formatted output (what your C++ printed to cout)
-    return PlainTextResponse(processed_file.stdout)
+    return PlainTextResponse(report_content)
 
     finally:
+      for path in (input_path, output_path):
+        try:
         # 5. Always delete the temporary file
-        os.unlink(tmp_path)
+          os.unlink(path)
+        except FileNotFoundError:
+          pass

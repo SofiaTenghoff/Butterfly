@@ -36,6 +36,11 @@ async def process_grade_report_file(file: UploadFile = File(...)): #file is a va
     text=True,
     timeout = 15
     )
+
+    print("Return code:", result.returncode)
+    print("stderr:", repr(result.stderr))
+    print("Output file size:", os.path.getsize(output_path))
+    
     #check if the C++ program failed
     if processed_file.returncode != 0:
       raise HTTPException(

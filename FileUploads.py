@@ -1,10 +1,13 @@
-import uuid
 from pathlib import Path
-from fastapi import UploadFile
-import subprocess #lets Python run other files on your computer
+from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.responses import PlainTextResponse
+import subprocess
 import tempfile
+import os
 
 CPP_EXECUTABLE = Path(r"C:\Users\tengh\Git\Butterfly")
+
+app = FastAPI()
 
 @app.post("/process")
 
@@ -34,7 +37,7 @@ async def process_grade_report_file(file: UploadFile = File(...)): #file is a va
     if processed_file.returncode != 0:
       raise HTTPException(
         status_code=400,
-        detail=result.stderr or "Processing failed"
+        detail=processed_file.stderr or "Processing failed"
     )
 
     #Read the report that C++ wrote to the output file
@@ -45,7 +48,7 @@ async def process_grade_report_file(file: UploadFile = File(...)): #file is a va
     # 4. Return the formatted output (what your C++ printed to cout)
     return PlainTextResponse(report_content)
 
-    finally:
+  finally:
       for path in (input_path, output_path):
         try:
         # 5. Always delete the temporary file

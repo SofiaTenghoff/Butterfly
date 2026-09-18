@@ -26,6 +26,7 @@ async def process_grade_report_file(file: UploadFile = File(...)): #file is a va
 
   #run C++ program on temporary file
   try:
+    print("Running:", str(CPP_EXECUTABLE), input_path, output_path)
     processed_file = subprocess.run(
       #THIS RIGHT HERE MAKES MY C++ CODE INTERPRET WHAT WAS SENT THROUGH UPLOAD FILE BUTTON AS A COMMAND LINE ARG
     [str(CPP_EXECUTABLE / "menu.exe"), input_path, output_path],

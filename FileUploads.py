@@ -1,5 +1,6 @@
 from pathlib import Path
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware #CORS middleware allows a backend to give persmission to a JavaScript frontend to interact with it
 from fastapi.responses import PlainTextResponse
 import subprocess
 import tempfile
@@ -10,6 +11,13 @@ CPP_DIR = Path(r"C:\Users\tengh\Git\Butterfly")
 CPP_EXECUTABLE = CPP_DIR/ "menu.exe"
 
 app = FastAPI()
+
+app.add_middleware( #running the function that actually implements the CORS stuff, which we need in order to give permission to the frontend
+  CORSMiddleWare,
+  allow_origins = ["*"], # * means yes, allow all origins
+  allow_methods = ["*"], # * means yes, allow all methods
+  allow_headers = ["*"]
+)
 
 @app.post("/process")
 

@@ -13,7 +13,7 @@ CPP_EXECUTABLE = CPP_DIR/ "menu.exe"
 app = FastAPI()
 
 app.add_middleware( #running the function that actually implements the CORS stuff, which we need in order to give permission to the frontend
-  CORSMiddleWare,
+  CORSMiddleware,
   allow_origins = ["*"], # * means yes, allow all origins
   allow_methods = ["*"], # * means yes, allow all methods
   allow_headers = ["*"]

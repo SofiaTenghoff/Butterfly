@@ -20,13 +20,14 @@ async def process_grade_report_file(file: UploadFile = File(...)): #file is a va
   #save the uploaded file to a temporary location
   with tempfile.NamedTemporaryFile(delete = False, suffix = ".txt") as tmp_in: #Using the tempfile module and its functions
     content = await file.read() #the UploadFile class has a .read() function
+    #Remove UTF BOM (extra 3 bytes on windows) if present
+    if content.startswith(b'\xef\xbb\xbf'):
+      content = content[3:]
     print("Uploaded content length:", len(content))
     print("First 100 bytes:", content[:100])
-    
     tmp_in.write(content) #writes the uploaded file's data into a temporary file on the server
-    tmp_in.flush()
+    tmp_in.flush() #force it to disk
     input_path = tmp_in.name #input_path is a normal string variable so we can access the temporary file later
-    print("Temp input file size:", os.path.getsize(input_path))
 
   with tempfile.NamedTemporaryFile(delete = False, suffix = ".txt") as tmp_out:
     output_path = tmp_out.name #not writing any contents to the file yet

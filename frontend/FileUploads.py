@@ -1,7 +1,7 @@
 from pathlib import Path
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware #CORS middleware allows a backend to give persmission to a JavaScript frontend to interact with it
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import PlainTextResponse, FileResponse
 import subprocess
 import tempfile
 import os

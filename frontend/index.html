@@ -17,9 +17,18 @@
       const fileInput = document.getElementById("fileInput"); //woohoo we're in Javascript now!
       const processButton = document.getElementById("processButton");
       //addEventListener says: listen for clicks to this button. When the button is clicked, run this code: 
-      processButton.addEventListener("click", function() {
+      processButton.addEventListener("click", async function() {
+        
         const file = fileInput.files[0];
-        console.log(file);
+
+        const formData = new FormData(); //object that contains a file and is able to send that file to my FastAPI's process function
+    
+        formData.append("file", file); //creates the file variable that my FastAPI code will take in as a parameter
+
+        const response = await fetch("http://127.0.0.1:8000/process", { //our Python code got that browswer link to work, remember?
+          method: "POST",
+          body: formData
+        
       });
     </script>
   </body>

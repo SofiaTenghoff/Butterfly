@@ -29,7 +29,10 @@
           method: "POST",
           body: formData
         });
-        
+
+        const result = await response.text();
+
+        console.log(result);
       });
     </script>
   </body>

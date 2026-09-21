@@ -17,7 +17,7 @@
       //browser creates the document object automatically for JavaScript to use--this is part of the language
       const fileInput = document.getElementById("fileInput"); //woohoo we're in Javascript now!
       const processButton = document.getElementById("processButton");
-      const result = document.getElementById("result");
+      const resultElement = document.getElementById("result");
       //addEventListener says: listen for clicks to this button. When the button is clicked, run this code: 
       processButton.addEventListener("click", async function() {
         
@@ -34,7 +34,8 @@
 
         const result = await response.text();
 
-        console.log(result);
+        resultElement.textContent = result; //previously resultElement had no text, because our pre-formatted HTML text contained no text--
+        //--it was blank. Now, by changing resultElement AFTER awaiting and obtaining the user's response, we get the result to sow up on the webpage
       });
       
     </script>

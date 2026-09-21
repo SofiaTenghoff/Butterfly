@@ -14,7 +14,7 @@ app = FastAPI()
 
 @app.get("/")
 async def home():
-  return PlainTextResponse("HELLO FROM FASTAPI")
+  return FileResponse(Path(__file__).parent / "index.html")
   
 app.add_middleware( #running the function that actually implements the CORS stuff, which we need in order to give permission to the frontend
   CORSMiddleware,

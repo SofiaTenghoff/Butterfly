@@ -14,7 +14,10 @@ app = FastAPI()
 
 @app.get("/")
 async def home():
-  return FileResponse(Path(__file__).parent / "index.html") # Path(__file__).parent gives the path to the file Python is currently running BEFORE looking for index.html
+  index_path = Path(__file__).parent / "index.html"
+  print("SERVING INDEX FROM:", index_path)
+  return FileResponse(index_path)
+  
 app.add_middleware( #running the function that actually implements the CORS stuff, which we need in order to give permission to the frontend
   CORSMiddleware,
   allow_origins = ["*"], # * means yes, allow all origins

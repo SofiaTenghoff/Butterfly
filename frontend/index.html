@@ -12,12 +12,14 @@
     <input type = "file" id = "fileInput"> <!--this creates the Choose File Button on the webpage-->
     <button id = "processButton">Process File</button> <!--Notice button goes inside body-->
     <!--the script marker tells the browser: the code in here is JavaScript-->
+    
     <pre id="result"</pre> <!--pre means pre formatted text. Preserves things like spaces, linebreaks, etc-->
     <script> 
       //browser creates the document object automatically for JavaScript to use--this is part of the language
       const fileInput = document.getElementById("fileInput"); //woohoo we're in Javascript now!
       const processButton = document.getElementById("processButton");
       const resultElement = document.getElementById("result");
+      
       //addEventListener says: listen for clicks to this button. When the button is clicked, run this code: 
       processButton.addEventListener("click", async function() {
         

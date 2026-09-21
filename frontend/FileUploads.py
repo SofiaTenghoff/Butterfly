@@ -14,9 +14,7 @@ app = FastAPI()
 
 @app.get("/")
 async def home():
-  index_path = Path(__file__).parent / "index.html"
-  print("SERVING INDEX FROM:", index_path)
-  return FileResponse(index_path)
+  return PlainTextResponse("HELLO FROM FASTAPI")
   
 app.add_middleware( #running the function that actually implements the CORS stuff, which we need in order to give permission to the frontend
   CORSMiddleware,

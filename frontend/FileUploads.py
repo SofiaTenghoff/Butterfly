@@ -6,7 +6,7 @@ import subprocess
 import tempfile
 import os
 
-CPP_DIR = Path(r"../menu")
+CPP_DIR = Path(__file__).parent.parent/ "menu"
 
 CPP_EXECUTABLE = CPP_DIR/ "menu.exe"
 

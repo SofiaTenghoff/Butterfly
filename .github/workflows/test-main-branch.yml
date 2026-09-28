@@ -19,7 +19,7 @@ jobs:
         run: g++ menu.cpp studentlist.cpp student.cpp -o menu
       - name: Run the program
         run: |
-           timeout 10 ./menu test1.txt secondNewTest.txt 
+           timeout 10 ./menu frontend/test1.txt secondNewTest.txt 
       - name: Show generated files
         run: |
           pwd

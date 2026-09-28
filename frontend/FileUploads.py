@@ -23,10 +23,11 @@ app.add_middleware( #running the function that actually implements the CORS stuf
   allow_headers = ["*"]
 )
 
+@app.get("/test1.txt")
+def download_test_file():
+  return FileResponse(Path(__file__).parent/ "test1.txt")
+
 @app.post("/process")
-
-#I assume we're going to convert C++'s read-in argument into an upload file variable and pass it to this function?
-
 #THIS RIGHT HERE CREATES THE UPLOADFILE BUTTON
 async def process_grade_report_file(file: UploadFile = File(...)): #file is a variable of type UploadFile and the file is required
   #save the uploaded file to a temporary location

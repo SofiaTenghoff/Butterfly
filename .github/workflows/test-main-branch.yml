@@ -23,6 +23,10 @@ jobs:
           echo "Contents of test1.txt:"
           cat frontend/test1.txt
           
+      - name: Check file encoding
+        run: |
+          xxd -l 16 frontend/test1.txt
+          
       - name: Run the program
         run: |
            timeout 10 ./menu frontend/test1.txt secondNewTest.txt 

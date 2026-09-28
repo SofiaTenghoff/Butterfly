@@ -30,6 +30,18 @@ jobs:
       - name: Run the program
         run: |
            timeout 10 ./menu frontend/test1.txt secondNewTest.txt 
+
+      - name: Check generated report
+        run: |
+          test -s secondNewTest.txt
+          grep -q "Marvin" secondNewTest.txt
+          grep -q "Joe" secondNewTest.txt
+          grep -q "Bugs" secondNewTest.txt
+          grep -q "Jimmy" secondNewTest.txt
+          grep -q "A:      1" secondNewTest.txt
+          grep -q "B:      2" secondNewTest.txt
+          grep -q "D:      1" secondNewTest.txt
+            
       - name: Show generated files
         run: |
           pwd

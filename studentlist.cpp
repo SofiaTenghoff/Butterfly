@@ -255,6 +255,17 @@ bool StudentList :: ImportFile(const char* filename)
 	inFile.open(filename);
 	if(!inFile)
 		return false;
+
+	// Remove UTF-8 BOM if the file has one
+	char bom[3];
+	inFile.read(bom, 3);
+
+	if (!(bom[0] == '\xEF' && bom[1] == '\xBB' && bom[2] == '\xBF'))
+	{
+    	inFile.clear();
+    	inFile.seekg(0);
+	}
+
 	int numStudents;
 	inFile>>numStudents;
 	inFile.ignore(1000, '\n');

@@ -67,3 +67,24 @@ jobs:
 
       - name: Test home endpoint
         run: curl --fail http://127.0.0.1:8000/
+
+      - name: Test post /Process
+        run: |
+          curl --fail \
+            -F "file=@frontend/test1.txt" \
+            http://127.0.0.1:8000/process \
+            -o apioutput.txt
+
+      - name: Check api-output.txt
+        run: |
+          test -s apioutput.txt
+          grep -q "Marvin" apioutput.txt
+          grep -q "Bugs" apioutput.txt
+          grep -q "Joe" apioutput.txt
+          grep -q "Jimmy" apioutput.txt
+          grep -q "A:      1" apioutput.txt
+          grep -q "B:      2" apioutput.txt
+          grep -q "D:      1" apioutput.txt
+            
+          
+      

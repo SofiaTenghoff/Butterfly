@@ -62,7 +62,7 @@ jobs:
 
       - name: Start FastAPI
         run: |
-         fastapi dev frontend/FileUploads.py &
+         python -m fastapi dev frontend/FileUploads.py &
           sleep 5
 
       - name: Test home endpoint

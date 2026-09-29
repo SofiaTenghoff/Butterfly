@@ -35,7 +35,7 @@
     
         formData.append("file", file); //creates the file variable that my FastAPI code will take in as a parameter
 
-        const response = await fetch("http://127.0.0.1:8000/process", { //our Python code got that browswer link to work, remember?
+        const response = await fetch("/process", { //our Python code got that browswer link to work, remember?
           method: "POST",
           body: formData
         });
